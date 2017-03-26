@@ -10,7 +10,9 @@ var TmpUser = mongoose.model('TmpUser', tmpUserSchema);
 
 var email_transporter = require('./email_transporter.js');
 
-var bcrypt = require('bcrypt-nodejs')
+var bcrypt = require('bcrypt-nodejs');
+
+var request = require('request');
 
 
 var auth = {
@@ -161,7 +163,58 @@ var auth = {
 				})
 			}
 		});
+	},
+	fb_callback : function(req,res){
+		console.log("GOT CALLBACK");
+		console.log(req.query);
+		// https://www.facebook.com/v2.8/dialog/oauth?%20client_id=1441995542511342&redirect_uri=http://localhost:3000/auth/facebook/callback&response_type=code&scope=email&auth_type=rerequest
+		var client_id="1441995542511342";
+		var client_secret="dd90443be0e0da08cc8edcec3181d8f0";
+		var redirect_uri="http://localhost:3000/auth/facebook/callback";
+
+		if(req.query.code){
+			var token_url = 'https://graph.facebook.com/v2.8/oauth/access_token?client_id='+client_id+'&redirect_uri='+redirect_uri+'&client_secret='+client_secret+'&code='+req.query.code;
+			console.log(token_url)
+			request(token_url, function (err, response) {
+				console.log("TRYING TOKEN");
+				console.log(response.statusCode);
+				if(err || response.statusCode!=200){
+					console.log("at 3");
+					res.send(err);
+				}
+				else{
+					
+					var body=JSON.parse(response.body);
+					var expires_in = body.expires_in;
+					var access_token = body.access_token;
+
+					console.log("access_token:"+body.access_token);
+
+					var profile_uri="https://graph.facebook.com/v2.8/me?fields=first_name,last_name,email"
+					request(profile_uri+"&access_token="+access_token,function(_err,_response){
+						if(_err || _response.statusCode!=200){
+							console.log("at 4");
+							res.send(_err);
+						}
+						else if(_response.body && JSON.parse(_response.body).email==null){
+							res.send("Please try again and provide email permission");
+						}
+						else{
+							res.send(JSON.parse(_response.body));
+						}
+					})
+				}	
+
+			});
+		}
+
+		
+
 	}
 }
 
 module.exports = auth;
+
+
+
+

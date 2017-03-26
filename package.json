@@ -18,6 +18,7 @@
     "nodemailer": "^3.1.8",
     "nodemailer-smtp-transport": "^2.7.2",
     "rand-token": "^0.3.0",
+    "request": "^2.81.0",
     "serve-favicon": "~2.3.0",
     "validator": "^7.0.0"
   }

@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.15.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
@@ -14,7 +15,10 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.1",
     "morgan": "~1.7.0",
+    "nodemailer": "^3.1.8",
+    "nodemailer-smtp-transport": "^2.7.2",
     "rand-token": "^0.3.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "validator": "^7.0.0"
   }
 }

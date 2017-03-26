@@ -4,15 +4,18 @@ var User = mongoose.model('User', userSchema);
 
 var users = {
 	save: function(req,res){
+
 		var user = new User({
-			first: req.body.first,
-			last:  req.body.last,
+			firstName: req.body.firstName,
+			lastName:  req.body.lastName,
 			email: req.body.email,
-			phone: req.body.phone
+			phone: req.body.phone,
+			address: req.body.address,
+			password : req.body.password
 		})
 		user.save(function(err,user){
 			if(err){
-				console.log(err);
+				res.send(err);
 			}
 			else{
 				res.status(201).send("saved "+user);
@@ -21,10 +24,12 @@ var users = {
 	},
 	update: function(req,res){
 		var tmp ={
-			first: req.body.first,
-			last:  req.body.last,
+			firstName: req.body.first,
+			lastName:  req.body.last,
 			email: req.body.email,
-			phone: req.body.phone
+			phone: req.body.phone,
+			address: req.body.address,
+			password : req.body.password
 		}
 		User.findByIdAndUpdate(req.params.id, tmp, {new:true},function(err,result){
 			if(err){

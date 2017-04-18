@@ -1,0 +1,42 @@
+[
+	{
+		"#":"1",
+		"que":"A red house is made out of red bricks, a blue house is made out of blue bricks.Whats a green house made out of?",
+		"opt1":"Green bricks (Of course)",
+		"opt2":"Glass (What the...?Why would it be this)",
+		"opt3":"Green (Why would it be made out of 1 color?)",
+		"opt4":"Shoes (I have no idea)Im guesing?",
+		"ans":"opt1"
+	},
+	{	
+		"#":"2",
+		"que":"There are 5 people on a boat.All of a sudden the boat flips.All but 1 gets there hair wet.Why didnt 1the 1 get his hair wet?",
+		"opt1":"Because he could hover above water. (Awesome technique)",
+		"opt2":"Dirty person (Hes so dirty, that the water couldnt get near him.hahahaha)",
+		"opt3":"Bald (No way.Wrong answer, it has to have more inflict)",
+		"opt4":"He was running on the water to land (Kung-fu or was it magic?)",
+		"ans":"opt2"
+	},
+	{	
+		"#":"3",
+		"que":"You are leading a cow north 1 mile, then east 1 mile, then south 1 mile, then west 1 mile.Where is the cows tail pointing?",
+		"opt1":"East (Of course) (Your the dummy)",
+		"opt2":"Down (Not why would the cow leave its tail up?)",
+		"opt3":"North (Hehe)",
+		"opt4":"West (Booyah.Im so sure I could eat the cow)",
+		"opt5":"South (Im sad)",
+		"ans":"opt1"
+	},
+	{	
+		"#":"4",
+		"que":"Have you done this before?Can you trust me?",
+		"opt1":"Yes (Click this if you want to get it correct)",
+		"opt2":"No (Click this if you want to get it wrong)",
+		"ans":"opt2"
+	},
+	{	
+		"#":"5",
+		"que":"Describe yourself in 50 words, why you are awesome?",
+		"ans":"sometextsometextsometext sometextsometext sometextsometext"
+	}
+]

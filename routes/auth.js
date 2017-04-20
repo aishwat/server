@@ -16,155 +16,164 @@ var request = require('request');
 
 
 var auth = {
-	signup:function(req,res){
+	signup : function(req, res){
+
+		// Check if email is already registered ?
+
 		var user = {
 			firstName: req.body.firstName,
 			lastName:  req.body.lastName,
 			email: req.body.email,
 			phone: req.body.phone
-		}
-		bcrypt.hash(req.body.password, null, null, function(err, _hash) {
-			if(err)
-				res.send(_err);
-			else{
-				user.hash = _hash;
-				jwt.sign(user, 'T3SC0_@2017',{ expiresIn: '1h' },function(_err,_token){
-					if(_err)
-						res.send(_err);
-					else{
-						console.log("at 3");
-						email_transporter.sendMail({to:'aishwat.singh@gmail.com',token:_token}, function(__err,info) {
-							if (__err) 
-								res.send(_err);
-							else
-								res.send('Message Id: '+ info.messageId+ "\nMessage Response: " +info.response);
-						});
-					}
-				});
-			}
-		});
+		};
 
-	},
-	signup_verified: function(req,res){
-		var token = req.query.token;
-		console.log(token);
-		jwt.verify(token, 'T3SC0_@2017', function(err, decoded) {
+		bcrypt.hash(req.body.password, null, null, function(err, hash){
 			if(err){
-				res.send("verification failed");
+				// I think we just need to log error and not send it back to the client
+				return res.status(500).send();
 			}
-			else{
+			user.hash = hash;
+			jwt.sign(user, 'T3SC0_@2017', {expiresIn : '1h'}, function(err, token){
+				if(err){
+					return res.status(500).send();
+				}
+				email_transporter.sendMail({
+					to : user.email,
+					token : token
+				}, function(err, info){
+					if(err){
+						return res.status(500).send();
+					}
+					//res.json sets content-type to application/json res.send does not
+					res.json({
+						messageId : info.messageId,
+						response : info.response
+					});
+				});
+			});
+		});
+	},
+	signup_verified : function(req, res){
+		jwt.verify(req.query.token, 'T3SC0_@2017', function(err, decoded) {
+			if(err){
+				return res.status(500).send();
+			}
+			var refresh_token = randtoken.generate(32);
+
+			var user = new User({
+				firstName: decoded.firstName,
+				lastName:  decoded.lastName,
+				email: decoded.email,
+				phone: decoded.phone,
+				password: decoded.hash,
+				refresh_token: refresh_token
+			});
+			user.save(function(err, doc){
+				if(err){
+					return res.status(500).send();
+				}
+
+				// Why is this needed ?
+				var user = {
+					email: doc.email,
+					phone: doc.phone,
+					_id: doc._id
+				};
+				jwt.sign(user, 'T3SC0_@2017', {expiresIn: '3h'}, function(err, token){
+					res.json({
+						access_token: token,
+						refresh_token: refresh_token,
+						expires_in: '3h',
+						token_type: 'Bearer'
+					});
+				});
+			});
+		});
+	},
+	login : function(req, res){
+		User.findOne({email: req.body.email}, function(err, doc){
+			if(err || !doc){
+				return res.status(500).send();
+			}
+			bcrypt.compare(req.body.password, doc.password, function(err, result) {
+				if(err || !result){
+					/* Guy in Tesco UK said that it is better security to not tell specifically 
+					whether username or password is incorrect, just say 'Username and password mismatch'.
+					This prevents a hacker from finding out whether an account is registered on
+					a website or not.
+					*/
+					return res.status(500).send();
+				}
 				var refresh_token = randtoken.generate(32);
-				var user = new User({
-					firstName: decoded.firstName,
-					lastName:  decoded.lastName,
-					email: decoded.email,
-					phone: decoded.phone,
-					password:decoded.hash,
-					refresh_token:refresh_token
-				})
-				user.save(function(_err,doc){
-					if(_err){
-						res.status(500).send(_err);
+				User.findByIdAndUpdate(doc._id, { $set: {'refresh_token': refresh_token}}, {new: true}, function(err, doc){
+					if(err){
+						return res.status(500).send();
 					}
-					else{
-						var _user = {
-							email:doc.email,
-							phone:doc.phone,
-							_id:doc._id
+
+					var user = {
+						email: doc.email,
+						phone: doc.phone,
+						_id: doc._id
+					}
+					jwt.sign(user, 'T3SC0_@2017', {expiresIn: '60s'}, function(err, token){
+						if(err){
+							return res.status(500).send();
 						}
-						jwt.sign(_user, 'T3SC0_@2017',{ expiresIn: '3h' },function(__err,_token){
-							res.send({access_token:_token,refresh_token:refresh_token,expires_in:"3h",token_type:"Bearer"});
+						res.json({
+							access_token: token,
+							refresh_token: doc.refresh_token,
+							expires_in: '60s',
+							token_type: 'Bearer'
 						});
-
-					}
+					});
 				});
-			}
+			});
 		});
 	},
-	login: function(req,res){
-		User.findOne({email:req.body.email},function(err,doc){
-			if(err){
-				res.send(err);
-			}
-			else{
-				bcrypt.compare(req.body.password, doc.password, function(_err, result) {
-					if(_err){
-						res.send(_err);
-					}
-					else if(result){
-						var refresh_token = randtoken.generate(32);
-						User.findByIdAndUpdate(doc._id,{ $set: {'refresh_token':refresh_token}} , {new:true},function(__err,_doc){
-							if(__err){
-								res.send(__err);
-							}
-							else{
-								var _user = {
-									email:_doc.email,
-									phone:_doc.phone,
-									_id:_doc._id
-								}
-								jwt.sign(_user, 'T3SC0_@2017',{ expiresIn: '60s' },function(___err,_token){
-									res.send({access_token:_token,refresh_token:_doc.refresh_token,expires_in:"60s",token_type:"Bearer"});
-								});
-							}
-						})
-					}
-					else {
-						res.send('Invalid password');
-					}
-				});
-			}
-		})
-	},
-	validate:function(req,res,next){
-
-		var token = req.headers.authorization.substr(7);
-		console.log(token);
-		jwt.verify(token, 'T3SC0_@2017', function(err, decoded) {
-			if(err){
-				res.send(err);
-			}
-			else{
-				res.send(decoded);
-				// req.decoded = decoded;
-				// next();
-			}
-		});
-	},
-	refresh:function(req,res){
+	validate : function(req, res, next){
 		var token = req.headers.authorization.substr(7);
 		jwt.verify(token, 'T3SC0_@2017', function(err, decoded) {
-			if(err && err.name!=="TokenExpiredError"){
-				res.send(err);
+			if(err){
+				return res.status(500).send();
 			}
-			else{
-				//valid token
-				var decoded = jwt.decode(token);//to get _id
-				var refresh_token = randtoken.generate(32);
-				console.log(decoded._id + " "+req.query.refresh_token );
-
-				User.findOneAndUpdate({$and:[{_id:decoded._id},{refresh_token:req.query.refresh_token}]},{ $set: {'refresh_token':refresh_token}} , {new:true},function(_err,_doc){
-					if(_err){
-						res.send(_err);
-					}
-					else if(_doc==null){
-						res.send("Invalid refresh_token");
-					}
-					else{
-						var _user = {
-							email:_doc.email,
-							phone:_doc.phone,
-							_id:_doc._id
-						}
-						jwt.sign(_user, 'T3SC0_@2017',{ expiresIn: '60s' },function(___err,_token){
-							res.send({access_token:_token,refresh_token:_doc.refresh_token,expires_in:"60s",token_type:"Bearer"});
-						});
-					}
-				})
-			}
+			res.send(decoded);
 		});
 	},
-	fb_callback : function(req,res){
+	refresh : function(req, res){
+		var token = req.headers.authorization.substr(7);
+		jwt.verify(token, 'T3SC0_@2017', function(err, decoded) {
+			if(err && err.name !== 'TokenExpiredError'){
+				return res.status(500).send();
+			}
+			//valid token
+			var decoded = jwt.decode(token);//to get _id
+			var refresh_token = randtoken.generate(32);
+			console.log(decoded._id + " "+req.query.refresh_token );
+
+			User.findOneAndUpdate({$and:[{_id:decoded._id},{refresh_token:req.query.refresh_token}]},{ $set: {'refresh_token':refresh_token}} ,{new:true}, function(err, doc){
+				if(err || !doc){
+					return res.status(500).send();
+				}
+				var user = {
+					email: doc.email,
+					phone: doc.phone,
+					_id: doc._id
+				}
+				jwt.sign(user, 'T3SC0_@2017',{ expiresIn: '60s' },function(err, token){
+					if(err){
+						return res.status(500).send();
+					}
+					res.json({
+						access_token: token,
+						refresh_token: doc.refresh_token,
+						expires_in: '60s',
+						token_type: 'Bearer'
+					});
+				});
+			})
+		});
+	},
+	fb_callback : function(req, res){
 		console.log("GOT CALLBACK");
 		console.log(req.query);
 		// https://www.facebook.com/v2.8/dialog/oauth?%20client_id=1441995542511342&redirect_uri=http://localhost:3000/auth/facebook/callback&response_type=code&scope=email&auth_type=rerequest
@@ -178,43 +187,31 @@ var auth = {
 			request(token_url, function (err, response) {
 				console.log("TRYING TOKEN");
 				console.log(response.statusCode);
-				if(err || response.statusCode!=200){
+				if(err || response.statusCode !== 200){
 					console.log("at 3");
-					res.send(err);
+					return res.status(500).send();
 				}
-				else{
 					
-					var body=JSON.parse(response.body);
-					var expires_in = body.expires_in;
-					var access_token = body.access_token;
+				var body = JSON.parse(response.body);
+				var expires_in = body.expires_in;
+				var access_token = body.access_token;
 
-					console.log("access_token:"+body.access_token);
+				console.log("access_token:"+body.access_token);
 
-					var profile_uri="https://graph.facebook.com/v2.8/me?fields=first_name,last_name,email"
-					request(profile_uri+"&access_token="+access_token,function(_err,_response){
-						if(_err || _response.statusCode!=200){
-							console.log("at 4");
-							res.send(_err);
-						}
-						else if(_response.body && JSON.parse(_response.body).email==null){
-							res.send("Please try again and provide email permission");
-						}
-						else{
-							res.send(JSON.parse(_response.body));
-						}
-					})
-				}	
-
+				var profile_uri="https://graph.facebook.com/v2.8/me?fields=first_name,last_name,email"
+				request(profile_uri + "&access_token=" + access_token, function(err, response){
+					if(err || response.statusCode !== 200){
+						console.log("at 4");
+						return res.status(500).send();
+					}
+					else if(response.body && !JSON.parse(response.body).email){
+						return res.send("Please try again and provide email permission");
+					}
+					res.json(JSON.parse(response.body));
+				});
 			});
 		}
-
-		
-
 	}
-}
+};
 
 module.exports = auth;
-
-
-
-

@@ -50,6 +50,4 @@ router.post('/questionnaire/upload',questionnaire.upload)
 router.get('/questionnaire/list',questionnaire.list)
 router.get('/questionnaire/getByTitle/:title',questionnaire.getByTitle)
 
-
-
 module.exports = router;

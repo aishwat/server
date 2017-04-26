@@ -1,0 +1,40 @@
+//q:question, o:option, a:answer, #:correct option, //:comment
+
+q.A red house is made out of red bricks, a blue house is made out of blue bricks.Whats a green house made out of?
+1.Green bricks (Of course)
+2.Glass (What the...?Why would it be this)
+3.Green (Why would it be made out of 1 color?)
+4.Shoes (I have no idea)Im guesing?
+1
+
+
+
+[q2]There are 5 people on a boat.All of a sudden the boat flips.All but 1 gets there hair wet.Why didnt 1the 1 get his hair wet?
+[o1]Because he could hover above water. (Awesome technique)
+[#o2]Dirty person (Hes so dirty, that the water couldnt get near him.hahahaha)
+[o3]Bald (No way.Wrong answer, it has to have more inflict)
+[o4]He was running on the water to land (Kung-fu or was it magic?)
+
+[q3]You are leading a cow north 1 mile, then east 1 mile, then south 1 mile, then west 1 mile.Where is the cows tail pointing?
+[o1]East (Of course) (Your the dummy)
+[#o2]Down (Not why would the cow leave its tail up?)
+[o3]North (Hehe)
+[o4]West (Booyah.Im so sure I could eat the cow)
+[o5]South (Im sad)
+
+[q4]Have you done this before?Can you trust me?
+[#o1]Yes (Click this if you want to get it correct)
+[o2]No (Click this if you want to get it wrong)
+
+[q5]Describe yourself in 50 words, why you are awesome?
+[a]sometextsometextsometext sometextsometext sometextsometext
+
+
+
+company_name
+logo
+dummy questionnaire
+contact_us
+home_page content (images/text)
+subjective_answers
+

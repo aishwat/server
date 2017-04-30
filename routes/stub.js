@@ -1,0 +1,108 @@
+const stub = [{
+    category: 'Aptitude',
+    subCategories: [{
+        subCategory: 'Simplification',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Average',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Percentage',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'RatioAndProportion',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Algebra',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'NumberSystem',
+        numberOfQuestions: 10
+    }]
+}, {
+    category: 'English',
+    subCategories: [{
+        subCategory: 'Simplification',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Average',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Percentage',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'RatioAndProportion',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Algebra',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'NumberSystem',
+        numberOfQuestions: 10
+    }]
+}, {
+    category: 'Reasoning',
+    subCategories: [{
+        subCategory: 'Simplification',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Average',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Percentage',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'RatioAndProportion',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Algebra',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'NumberSystem',
+        numberOfQuestions: 10
+    }]
+}, {
+    category: 'Computer',
+    subCategories: [{
+        subCategory: 'Simplification',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Average',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Percentage',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'RatioAndProportion',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Algebra',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'NumberSystem',
+        numberOfQuestions: 10
+    }]
+}, {
+    category: 'Marketing',
+    subCategories: [{
+        subCategory: 'Simplification',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Average',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Percentage',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'RatioAndProportion',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'Algebra',
+        numberOfQuestions: 10
+    }, {
+        subCategory: 'NumberSystem',
+        numberOfQuestions: 10
+    }]
+}];
+
+module.exports = stub;

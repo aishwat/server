@@ -5,6 +5,7 @@ var auth = require('./auth.js');
 var email_transporter = require('./email_transporter.js');
 var questionnaire = require('./questionnaire.js');
 var stub = require('./stub');
+var stub2 = require('./stub2');
 /* GET home page. */
 // router.get('/', function(req, res, next) {
 
@@ -50,31 +51,17 @@ router.get('/questionnaire/getByTitle/:title', questionnaire.getByTitle)
 router.get('/categories', function(req, res) {
     res.json(stub);
 });
+
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
 router.get('/questions', function(req, res) {
     var questions = [];
     for (var i = 0; i < 10; i++) {
-        questions.push({
-            question: i + ')  Ramesh married ten years ago at the age of 27 years. His wife was 23 years old then. Six years later the average age of Ramesh, his wife and their son was 22 years. How old was the son then?',
-            options: [
-                {
-                    answer: '6 years',
-                    style: {}
-                },
-                {
-                    answer: '8 years',
-                    style: {}
-                },
-                {
-                    answer: '5 years',
-                    style: {}
-                },
-                {
-                    answer: '4 years',
-                    style: {}
-                }
-            ],
-            answer: 3
-        });
+        questions.push(stub2[getRandomInt(0, stub2.length)]);
     }
     questions.correctAnswered =  0;
     res.json(questions);

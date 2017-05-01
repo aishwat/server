@@ -9,7 +9,21 @@ var API = {
         }
         httpRequest.open('GET', url);
         httpRequest.send();
-    }
+    },
+
+    post : function(apiUrl , postData , successCb){
+		$.ajax({
+			url : apiUrl,
+			type : 'POST',
+			data : postData,
+			success : function(data , status){
+				successCb(data);
+			},
+			error : function(){
+				console.log('POST Error');
+			}
+		});
+	},
 };
 
 module.exports  = API;

@@ -38,9 +38,10 @@ var auth = {
 					return res.status(500).send();
 				}
 				email_transporter.sendMail({
-					to : user.email,
+					to : 'mayurjoshi9876@gmail.com',
 					token : token
 				}, function(err, info){
+					console.log(info);
 					if(err){
 						return res.status(500).send();
 					}
@@ -56,7 +57,7 @@ var auth = {
 	signup_verified : function(req, res){
 		jwt.verify(req.query.token, 'T3SC0_@2017', function(err, decoded) {
 			if(err){
-				return res.status(500).send();
+				return res.status(500).send('Error verifying!');
 			}
 			var refresh_token = randtoken.generate(32);
 
@@ -68,26 +69,30 @@ var auth = {
 				password: decoded.hash,
 				refresh_token: refresh_token
 			});
+			console.log(user);
 			user.save(function(err, doc){
 				if(err){
-					return res.status(500).send();
+					return res.status(500).send('Error saving user!');
 				}
 
 				// Why is this needed ?
-				var user = {
-					email: doc.email,
-					phone: doc.phone,
-					_id: doc._id
-				};
-				jwt.sign(user, 'T3SC0_@2017', {expiresIn: '3h'}, function(err, token){
-					res.json({
-						access_token: token,
-						refresh_token: refresh_token,
-						expires_in: '3h',
-						token_type: 'Bearer'
-					});
-				});
+
+				// var user = {
+				// 	email: doc.email,
+				// 	phone: doc.phone,
+				// 	_id: doc._id
+				// };
+				// jwt.sign(user, 'T3SC0_@2017', {expiresIn: '3h'}, function(err, token){
+				// 	res.json({
+				// 		access_token: token,
+				// 		refresh_token: refresh_token,
+				// 		expires_in: '3h',
+				// 		token_type: 'Bearer'
+				// 	});
+				// });
+				res.redirect('/');
 			});
+
 		});
 	},
 	login : function(req, res){
@@ -115,17 +120,18 @@ var auth = {
 						phone: doc.phone,
 						_id: doc._id
 					}
-					jwt.sign(user, 'T3SC0_@2017', {expiresIn: '60s'}, function(err, token){
-						if(err){
-							return res.status(500).send();
-						}
-						res.json({
-							access_token: token,
-							refresh_token: doc.refresh_token,
-							expires_in: '60s',
-							token_type: 'Bearer'
-						});
-					});
+					// jwt.sign(user, 'T3SC0_@2017', {expiresIn: '60s'}, function(err, token){
+					// 	if(err){
+					// 		return res.status(500).send();
+					// 	}
+					// 	res.json({
+					// 		access_token: token,
+					// 		refresh_token: doc.refresh_token,
+					// 		expires_in: '60s',
+					// 		token_type: 'Bearer'
+					// 	});
+					// });
+					res.json(user);
 				});
 			});
 		});

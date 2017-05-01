@@ -22,85 +22,64 @@ const stub = [{
 }, {
     category: 'English',
     subCategories: [{
-        subCategory: 'Simplification',
+        subCategory: 'Grammar',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Average',
+        subCategory: 'Verbal Ablity',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Percentage',
+        subCategory: 'Reading',
         numberOfQuestions: 10
     }, {
-        subCategory: 'RatioAndProportion',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'Algebra',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'NumberSystem',
+        subCategory: 'Comprehension',
         numberOfQuestions: 10
     }]
 }, {
     category: 'Reasoning',
     subCategories: [{
-        subCategory: 'Simplification',
+        subCategory: 'Cause and effect',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Average',
+        subCategory: 'Course of Action',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Percentage',
+        subCategory: 'Critical reasoning',
         numberOfQuestions: 10
     }, {
-        subCategory: 'RatioAndProportion',
+        subCategory: 'Statements',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Algebra',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'NumberSystem',
+        subCategory: 'Arguments',
         numberOfQuestions: 10
     }]
 }, {
     category: 'Computer',
     subCategories: [{
-        subCategory: 'Simplification',
+        subCategory: 'Networking',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Average',
+        subCategory: 'Database',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Percentage',
+        subCategory: 'Algorithm',
         numberOfQuestions: 10
     }, {
-        subCategory: 'RatioAndProportion',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'Algebra',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'NumberSystem',
+        subCategory: 'Data Structures',
         numberOfQuestions: 10
     }]
 }, {
     category: 'Marketing',
     subCategories: [{
-        subCategory: 'Simplification',
+        subCategory: 'Introduction',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Average',
+        subCategory: 'Product management',
         numberOfQuestions: 10
     }, {
-        subCategory: 'Percentage',
+        subCategory: 'Consumer',
         numberOfQuestions: 10
     }, {
-        subCategory: 'RatioAndProportion',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'Algebra',
-        numberOfQuestions: 10
-    }, {
-        subCategory: 'NumberSystem',
+        subCategory: 'Customer',
         numberOfQuestions: 10
     }]
 }];

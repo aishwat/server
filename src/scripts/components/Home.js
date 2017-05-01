@@ -25,6 +25,7 @@ import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import Dispatcher from '../dispatcher/Dispatcher';
 import HomeStore from '../stores/HomeStore';
 import QuestionsStore from '../stores/QuestionsStore';
+import LandingStore from '../stores/LandingStore';
 import HomeActions from '../actions/HomeActions';
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
@@ -82,13 +83,13 @@ class Home extends React.Component {
             zIndex: 10
           }
         };
-
+        
         return (
-            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} style={{backgroundColor:Colors.grey200}}>
                 <div>
                     <Toolbar style={{backgroundColor:Colors.cyan300}}/>
                     <Drawer open={this.state.open}>
-                      <MenuItem style={{backgroundColor:Colors.cyan300, height:'56px'}}></MenuItem>
+                      <MenuItem primaryText={LandingStore.getUserData().email} style={{backgroundColor:Colors.cyan300, height:'56px'}}></MenuItem>
                       {
                         this.state.model.map(function(object, index){
                             var icon = object.isClicked ? <ArrowDropUp /> : <ArrowDropDown/>;
@@ -134,11 +135,21 @@ class Home extends React.Component {
                                 {
                                     (this.state.questions.length > 0) && (function(){
                                         var questionObj = self.state.questions[self.state.questionNumber];
+                                        var q = (self.state.questionNumber + 1) + '/' + (self.state.questions.length)  + ')   ' + questionObj.question;
                                         return (
                                             <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
-                                                <p>{questionObj.question}</p>
+                                                <p>{q}</p>
                                             </div>
                                         )
+                                    })()
+                                }
+                                {
+                                    (this.state.questions.length === 0) && (function(){
+                                        return (
+                                            <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
+                                                <p><b>Select category to begin</b></p>
+                                            </div>
+                                            )
                                     })()
                                 }
                             </Paper>
@@ -156,7 +167,7 @@ class Home extends React.Component {
                                                             var _answerIndex = index;
                                                             
                                                             return function(){
-                                                                console.log('here');
+                                                               
                                                                 self._answerClicked(_questionIndex, _answerIndex);
                                                             }
                                                         })()}
@@ -166,6 +177,7 @@ class Home extends React.Component {
                                         })
                                         )
                                     })()
+
                             }
                             
                             <BottomNavigation style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20, marginBottom: 20, width: 900, height: 48, marginTop: 50}}>
@@ -198,6 +210,9 @@ class Home extends React.Component {
                                     self.setState({
                                     questionNumber: questionNumber + 1
                                 });
+                                // if(questionNumber === self.state.questions.length - 1){
+                                //     location.href = '/#/report';
+                                // }
                                 }
                                 
                             }}
@@ -256,7 +271,7 @@ class Home extends React.Component {
                 self.setState({
                     questionNumber: questionNumber + 1
                 })
-            }, 300000);
+            }, 5000);
         }
 
         this.setState({

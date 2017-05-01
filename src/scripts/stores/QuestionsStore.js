@@ -13,7 +13,7 @@ var QuestionsStore = assign({}, EventEmitter.prototype, {
     },
 
     removeChangeListener: function(callback) {
-        this.removeChangeListener(CHANGE_EVENT, callback);
+        this.removeListener(CHANGE_EVENT, callback);
     },
 
     emitChange: function() {

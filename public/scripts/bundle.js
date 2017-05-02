@@ -99524,7 +99524,7 @@ var HomeActions = {
 
 module.exports = HomeActions;
 
-},{"../dispatcher/Dispatcher":843,"../utils/API":847,"../utils/ActionTypes":848,"../utils/Constants":849}],831:[function(require,module,exports){
+},{"../dispatcher/Dispatcher":844,"../utils/API":848,"../utils/ActionTypes":849,"../utils/Constants":850}],831:[function(require,module,exports){
 'use strict';
 
 var _Dispatcher = require('../dispatcher/Dispatcher');
@@ -99579,7 +99579,7 @@ var LandingActions = {
 
 module.exports = LandingActions;
 
-},{"../dispatcher/Dispatcher":843,"../utils/API":847,"../utils/ActionTypes":848,"../utils/Constants":849}],832:[function(require,module,exports){
+},{"../dispatcher/Dispatcher":844,"../utils/API":848,"../utils/ActionTypes":849,"../utils/Constants":850}],832:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -99645,7 +99645,7 @@ var App = function (_React$Component) {
 
 module.exports = App;
 
-},{"./Home":836,"./LandingPage":837,"./Report":840,"react":707,"react-router-dom":643}],833:[function(require,module,exports){
+},{"./Home":837,"./LandingPage":838,"./Report":841,"react":707,"react-router-dom":643}],833:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -99709,7 +99709,7 @@ var Body = function (_Component) {
 
 module.exports = Body;
 
-},{"./Login.js":838,"./Signup.js":841,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RaisedButton":412,"react":707}],834:[function(require,module,exports){
+},{"./Login.js":839,"./Signup.js":842,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RaisedButton":412,"react":707}],834:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -99847,6 +99847,76 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _Paper = require('material-ui/Paper');
+
+var _Paper2 = _interopRequireDefault(_Paper);
+
+var _colors = require('material-ui/styles/colors');
+
+var Colors = _interopRequireWildcard(_colors);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var paperStyle = {
+	position: 'fixed',
+	top: 0,
+	left: 0,
+	right: 0,
+	width: 'auto',
+	height: '56px',
+	backgroundColor: Colors.cyan300,
+	opacity: 0,
+	display: 'block'
+};
+var divStyle = {
+	color: 'white',
+	marginTop: '8px',
+	marginLeft: '20px',
+	opacity: 1
+};
+
+var Header2 = function (_Component) {
+	_inherits(Header2, _Component);
+
+	function Header2() {
+		_classCallCheck(this, Header2);
+
+		return _possibleConstructorReturn(this, (Header2.__proto__ || Object.getPrototypeOf(Header2)).apply(this, arguments));
+	}
+
+	_createClass(Header2, [{
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				_Paper2.default,
+				{ style: paperStyle },
+				_react2.default.createElement('div', { style: divStyle })
+			);
+		}
+	}]);
+
+	return Header2;
+}(_react.Component);
+
+module.exports = Header2;
+
+},{"material-ui/Paper":404,"material-ui/styles/colors":447,"react":707}],837:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
 var _darkBaseTheme = require('material-ui/styles/baseThemes/darkBaseTheme');
 
 var _darkBaseTheme2 = _interopRequireDefault(_darkBaseTheme);
@@ -99955,6 +100025,10 @@ var _HomeActions = require('../actions/HomeActions');
 
 var _HomeActions2 = _interopRequireDefault(_HomeActions);
 
+var _Header = require('./Header2');
+
+var _Header2 = _interopRequireDefault(_Header);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -100028,7 +100102,7 @@ var Home = function (_React$Component) {
                 width: 900,
                 // marginLeft: 350,
                 // marginRight: 50,
-                marginTop: 50,
+                marginTop: 90,
                 // marginBottom: 50,
                 textAlign: 'center',
                 display: 'inline-block',
@@ -100060,13 +100134,29 @@ var Home = function (_React$Component) {
                 left: 400
             };
 
+            var paperStyle = {
+                position: 'fixed',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                width: 'auto',
+                height: '40px',
+                backgroundColor: 'rgb(0, 188, 212)'
+            };
+            var divStyle = {
+                color: 'white',
+                marginTop: '8px',
+                marginLeft: '20px'
+
+            };
+
             return _react2.default.createElement(
                 _MuiThemeProvider2.default,
                 { muiTheme: (0, _getMuiTheme2.default)(_lightBaseTheme2.default), style: { backgroundColor: Colors.grey200 } },
                 _react2.default.createElement(
                     'div',
                     null,
-                    _react2.default.createElement(_Toolbar.Toolbar, { style: { backgroundColor: Colors.cyan300 } }),
+                    _react2.default.createElement(_Header2.default, null),
                     _react2.default.createElement(
                         _Drawer2.default,
                         { open: this.state.open },
@@ -100220,7 +100310,6 @@ var Home = function (_React$Component) {
                             style: buttonStyle,
                             onTouchTap: function onTouchTap() {
                                 _HomeActions2.default.viewReport(self.state.model);
-                                //console.log(self.state.model);
                             }
                         })
                     )
@@ -100266,7 +100355,7 @@ var Home = function (_React$Component) {
             var newModel = this.state.model;
             if (newQuestions[questionIndex].answer === answerIndex) {
                 newQuestions.correctAnswered = newQuestions.correctAnswered + 1;
-                console.log(self.currentCategory);
+
                 newModel.map(function (obj, index) {
                     if (obj.category === self.currentCategory.category) {
                         obj.subCategories[self.currentCategory.subCategoryIndex].correctAnswered++;
@@ -100301,7 +100390,7 @@ var Home = function (_React$Component) {
 
 module.exports = Home;
 
-},{"../actions/HomeActions":830,"../dispatcher/Dispatcher":843,"../stores/HomeStore":844,"../stores/LandingStore":845,"../stores/QuestionsStore":846,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FloatingActionButton":391,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707}],837:[function(require,module,exports){
+},{"../actions/HomeActions":830,"../dispatcher/Dispatcher":844,"../stores/HomeStore":845,"../stores/LandingStore":846,"../stores/QuestionsStore":847,"./Header2":836,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FloatingActionButton":391,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707}],838:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -100507,7 +100596,7 @@ var LandingPage = function (_React$Component) {
 
 module.exports = LandingPage;
 
-},{"../actions/LandingActions":831,"../dispatcher/Dispatcher":843,"../stores/LandingStore":845,"./Body":833,"./Footer":834,"./Header":835,"./Home":836,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707,"react-router-dom":643}],838:[function(require,module,exports){
+},{"../actions/LandingActions":831,"../dispatcher/Dispatcher":844,"../stores/LandingStore":846,"./Body":833,"./Footer":834,"./Header":835,"./Home":837,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707,"react-router-dom":643}],839:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -100549,7 +100638,7 @@ var Login = function (_Component) {
 
 module.exports = Login;
 
-},{"./LoginForm":839,"react":707}],839:[function(require,module,exports){
+},{"./LoginForm":840,"react":707}],840:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -100732,7 +100821,7 @@ var LoginForm = function (_React$Component) {
 
 module.exports = LoginForm;
 
-},{"material-ui/Card":376,"material-ui/Checkbox":378,"material-ui/Dialog":380,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RadioButton":410,"material-ui/RaisedButton":412,"material-ui/SelectField":414,"material-ui/TextField":424,"react":707}],840:[function(require,module,exports){
+},{"material-ui/Card":376,"material-ui/Checkbox":378,"material-ui/Dialog":380,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RadioButton":410,"material-ui/RaisedButton":412,"material-ui/SelectField":414,"material-ui/TextField":424,"react":707}],841:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -100855,6 +100944,14 @@ var _HomeActions2 = _interopRequireDefault(_HomeActions);
 
 var _recharts = require('recharts');
 
+var _Header = require('./Header2');
+
+var _Header2 = _interopRequireDefault(_Header);
+
+var _Footer = require('./Footer');
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -100865,198 +100962,269 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var recentsIcon = _react2.default.createElement(
-  _FontIcon2.default,
-  { className: 'material-icons' },
-  'restore'
+    _FontIcon2.default,
+    { className: 'material-icons' },
+    'restore'
 );
 var favoritesIcon = _react2.default.createElement(
-  _FontIcon2.default,
-  { className: 'material-icons' },
-  'favorite'
+    _FontIcon2.default,
+    { className: 'material-icons' },
+    'favorite'
 );
 var nearbyIcon = _react2.default.createElement(_locationOn2.default, null);
 //import Recharts from 'recharts';
 
-var data = [{ name: 'Page A', uv: 4000, pv: 2400, amt: 0 }, { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 }, { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 }, { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 }, { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 }, { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 }, { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 }];
+//import Body from './Body';
+
+// const data = [
+//     { name: 'Page A', uv: 4000, pv: 2400, amt: 0 },
+//     { name: 'Page B', uv: 3000, pv: 1398, amt: 2210 },
+//     { name: 'Page C', uv: 2000, pv: 9800, amt: 2290 },
+//     { name: 'Page D', uv: 2780, pv: 3908, amt: 2000 },
+//     { name: 'Page E', uv: 1890, pv: 4800, amt: 2181 },
+//     { name: 'Page F', uv: 2390, pv: 3800, amt: 2500 },
+//     { name: 'Page G', uv: 3490, pv: 4300, amt: 2100 },
+// ];
 var style = {
-  display: 'inline-block'
+    display: 'inline-block'
 };
 
+var paperStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: 'auto',
+    height: '40px',
+    backgroundColor: 'rgb(0, 188, 212)'
+};
+var divStyle = {
+    color: 'white',
+    marginTop: '8px',
+    marginLeft: '20px'
+
+};
+
+var buttonStyle = _defineProperty({
+    marginRight: 20,
+    height: 40,
+    width: 100,
+    // marginLeft: 350,
+    // marginRight: 50,
+    // marginTop: 50,
+    // marginBottom: 50,
+    textAlign: 'center',
+    display: 'inline-block',
+    position: 'absolute',
+    right: 20,
+    top: 0,
+    left: 0,
+    zIndex: 3,
+    backgroundColor: Colors.red300
+}, 'position', 'fixed');
+
 var SimpleBarChart = function (_React$Component) {
-  _inherits(SimpleBarChart, _React$Component);
+    _inherits(SimpleBarChart, _React$Component);
 
-  function SimpleBarChart() {
-    _classCallCheck(this, SimpleBarChart);
+    function SimpleBarChart() {
+        _classCallCheck(this, SimpleBarChart);
 
-    return _possibleConstructorReturn(this, (SimpleBarChart.__proto__ || Object.getPrototypeOf(SimpleBarChart)).apply(this, arguments));
-  }
-
-  _createClass(SimpleBarChart, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _recharts.BarChart,
-        { data: this.props.data, width: this.props.width, height: this.props.height,
-          margin: { top: 20, right: 30, left: 20, bottom: 5 }, style: style },
-        _react2.default.createElement(_recharts.XAxis, { dataKey: 'name' }),
-        _react2.default.createElement(_recharts.YAxis, { domain: [0, 5] }),
-        _react2.default.createElement(_recharts.CartesianGrid, { strokeDasharray: '3 3' }),
-        _react2.default.createElement(_recharts.Tooltip, null),
-        _react2.default.createElement(_recharts.Legend, null),
-        _react2.default.createElement(_recharts.Bar, { dataKey: 'right', fill: '#8884d8' }),
-        _react2.default.createElement(_recharts.Bar, { dataKey: 'wrong', fill: '#82ca9d' })
-      );
+        return _possibleConstructorReturn(this, (SimpleBarChart.__proto__ || Object.getPrototypeOf(SimpleBarChart)).apply(this, arguments));
     }
-  }]);
 
-  return SimpleBarChart;
+    _createClass(SimpleBarChart, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _recharts.BarChart,
+                { data: this.props.data, width: this.props.width, height: this.props.height,
+                    margin: { top: 20, right: 30, left: 20, bottom: 5 }, style: style },
+                _react2.default.createElement(_recharts.XAxis, { dataKey: 'name' }),
+                _react2.default.createElement(_recharts.YAxis, { domain: [0, 5] }),
+                _react2.default.createElement(_recharts.CartesianGrid, { strokeDasharray: '3 3' }),
+                _react2.default.createElement(_recharts.Tooltip, null),
+                _react2.default.createElement(_recharts.Legend, null),
+                _react2.default.createElement(_recharts.Bar, { dataKey: 'right', fill: '#8884d8' }),
+                _react2.default.createElement(_recharts.Bar, { dataKey: 'wrong', fill: '#82ca9d' })
+            );
+        }
+    }]);
+
+    return SimpleBarChart;
 }(_react2.default.Component);
 
 ;
 
 var SimpleRadarChart = function (_React$Component2) {
-  _inherits(SimpleRadarChart, _React$Component2);
+    _inherits(SimpleRadarChart, _React$Component2);
 
-  function SimpleRadarChart() {
-    _classCallCheck(this, SimpleRadarChart);
+    function SimpleRadarChart() {
+        _classCallCheck(this, SimpleRadarChart);
 
-    return _possibleConstructorReturn(this, (SimpleRadarChart.__proto__ || Object.getPrototypeOf(SimpleRadarChart)).apply(this, arguments));
-  }
-
-  _createClass(SimpleRadarChart, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _recharts.RadarChart,
-        { cx: 300, cy: 250, outerRadius: 150, width: 600, height: 500, data: this.props.data },
-        _react2.default.createElement(_recharts.Radar, { name: 'Mike', dataKey: 'A', stroke: '#8884d8', fill: '#8884d8', fillOpacity: 0.6 }),
-        _react2.default.createElement(_recharts.Radar, { name: 'Lily', dataKey: 'B', stroke: '#82ca9d', fill: '#82ca9d', fillOpacity: 0.6 }),
-        _react2.default.createElement(_recharts.PolarGrid, null),
-        _react2.default.createElement(_recharts.PolarAngleAxis, { dataKey: 'subject' }),
-        _react2.default.createElement(_recharts.PolarRadiusAxis, { domain: [0, 5] })
-      );
+        return _possibleConstructorReturn(this, (SimpleRadarChart.__proto__ || Object.getPrototypeOf(SimpleRadarChart)).apply(this, arguments));
     }
-  }]);
 
-  return SimpleRadarChart;
+    _createClass(SimpleRadarChart, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                _recharts.RadarChart,
+                { cx: 300, cy: 250, outerRadius: 150, width: 600, height: 500, data: this.props.data },
+                _react2.default.createElement(_recharts.Radar, { name: 'Mike', dataKey: 'A', stroke: '#8884d8', fill: '#8884d8', fillOpacity: 0.6 }),
+                _react2.default.createElement(_recharts.Radar, { name: 'Lily', dataKey: 'B', stroke: '#82ca9d', fill: '#82ca9d', fillOpacity: 0.6 }),
+                _react2.default.createElement(_recharts.PolarGrid, null),
+                _react2.default.createElement(_recharts.PolarAngleAxis, { dataKey: 'subject' }),
+                _react2.default.createElement(_recharts.PolarRadiusAxis, { domain: [0, 5] })
+            );
+        }
+    }]);
+
+    return SimpleRadarChart;
 }(_react2.default.Component);
 
 var Report = function (_React$Component3) {
-  _inherits(Report, _React$Component3);
+    _inherits(Report, _React$Component3);
 
-  function Report(props) {
-    _classCallCheck(this, Report);
+    function Report(props) {
+        _classCallCheck(this, Report);
 
-    return _possibleConstructorReturn(this, (Report.__proto__ || Object.getPrototypeOf(Report)).call(this, props));
-    // this.state = {
-    //     model: HomeStore.getModel()
-    // };
+        return _possibleConstructorReturn(this, (Report.__proto__ || Object.getPrototypeOf(Report)).call(this, props));
+        // this.state = {
+        //     model: HomeStore.getModel()
+        // };
 
-    //this.state = HomeStore.getModel();
-  }
-
-  _createClass(Report, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.state = {
-        model: _HomeStore2.default.getModel()
-      };
-
-      // 	HomeStore.addChangeListener(this._change);
-      //        QuestionsStore.addChangeListener(this._change);
+        //this.state = HomeStore.getModel();
     }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      //window.onbeforeunload = function () {return true;}
-      // HomeStore.removeChangeListener(this._change);
-      // QuestionsStore.removeChangeListener(this._change);
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      //window.onbeforeunload = function () {return false;}
 
-      var self = this;
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'div',
-          null,
-          function () {
-            return self.state.model.map(function (object, index) {
-              var data = [];
+    _createClass(Report, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {
+            this.state = {
+                model: _HomeStore2.default.getModel()
+            };
 
-              object.subCategories.map(function (_object, index) {
-                var obj = {};
-                console.log(_object);
-                obj.name = _object.subCategory;
-                obj.right = _object.correctAnswered;
-                obj.wrong = 5 - _object.correctAnswered;
-                //obj.amt = 0;
-                data.push(obj);
-              });
-              return _react2.default.createElement(
-                'div',
-                { key: index, display: style },
-                _react2.default.createElement(
-                  'h4',
-                  null,
-                  object.category
-                ),
-                _react2.default.createElement(SimpleBarChart, { data: data, width: 900, height: 300 })
-              );
-            });
-          }()
-        ),
-        _react2.default.createElement(
-          'div',
-          null,
-          function () {
-            var data = [];
+            //  HomeStore.addChangeListener(this._change);
+            //        QuestionsStore.addChangeListener(this._change);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            //window.onbeforeunload = function () {return true;}
+            // HomeStore.removeChangeListener(this._change);
+            // QuestionsStore.removeChangeListener(this._change);
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            //window.onbeforeunload = function () {return false;}
 
-            self.state.model.map(function (object) {
-              var correct = 0;
-              var categories = 0;
-              object.subCategories.map(function (_object) {
-                correct += _object.correctAnswered;
-                categories++;
-              });
-              var obj = {
-                subject: object.category,
-                A: correct,
-                B: 5 - correct
-              };
-              //console.log(obj);
-              data.push(obj);
-            });
-
+            var self = this;
             return _react2.default.createElement(
-              'div',
-              null,
-              _react2.default.createElement(
-                'h4',
-                null,
-                'Summary Radar Chart'
-              ),
-              _react2.default.createElement(SimpleRadarChart, { data: data })
-            );
-          }()
-        )
-      );
-    }
-  }]);
+                _MuiThemeProvider2.default,
+                { muiTheme: (0, _getMuiTheme2.default)(_lightBaseTheme2.default), style: paperStyle },
+                _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement(_Header2.default, null),
+                    _react2.default.createElement(_RaisedButton2.default, {
+                        label: 'Back',
+                        labelPosition: 'after',
+                        primary: true,
+                        icon: _react2.default.createElement(_arrowBack2.default, null),
+                        style: buttonStyle,
+                        onTouchTap: function onTouchTap() {
+                            location.href = '/#/home';
+                        } }),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        '. '
+                    ),
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        '. '
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        function () {
+                            return self.state.model.map(function (object, index) {
+                                var data = [];
 
-  return Report;
+                                object.subCategories.map(function (_object, index) {
+                                    var obj = {};
+
+                                    obj.name = _object.subCategory;
+                                    obj.right = _object.correctAnswered;
+                                    obj.wrong = 5 - _object.correctAnswered;
+                                    //obj.amt = 0;
+                                    data.push(obj);
+                                });
+                                return _react2.default.createElement(
+                                    'div',
+                                    { key: index, display: style },
+                                    _react2.default.createElement(
+                                        'h4',
+                                        null,
+                                        object.category
+                                    ),
+                                    _react2.default.createElement(SimpleBarChart, { data: data, width: 900, height: 300 })
+                                );
+                            });
+                        }()
+                    ),
+                    _react2.default.createElement(
+                        'div',
+                        null,
+                        function () {
+                            var data = [];
+
+                            self.state.model.map(function (object) {
+                                var correct = 0;
+                                var categories = 0;
+                                object.subCategories.map(function (_object) {
+                                    correct += _object.correctAnswered;
+                                    categories++;
+                                });
+                                var obj = {
+                                    subject: object.category,
+                                    A: correct,
+                                    B: 5 - correct
+                                };
+
+                                data.push(obj);
+                            });
+
+                            return _react2.default.createElement(
+                                'div',
+                                null,
+                                _react2.default.createElement(
+                                    'h4',
+                                    null,
+                                    'Summary Radar Chart'
+                                ),
+                                _react2.default.createElement(SimpleRadarChart, { data: data })
+                            );
+                        }()
+                    ),
+                    _react2.default.createElement(_Footer2.default, null)
+                )
+            );
+        }
+    }]);
+
+    return Report;
 }(_react2.default.Component);
 
 ;
 
 module.exports = Report;
 
-},{"../actions/HomeActions":830,"../dispatcher/Dispatcher":843,"../stores/HomeStore":844,"../stores/LandingStore":845,"../stores/QuestionsStore":846,"d3":121,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FloatingActionButton":391,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707,"recharts":746}],841:[function(require,module,exports){
+},{"../actions/HomeActions":830,"../dispatcher/Dispatcher":844,"../stores/HomeStore":845,"../stores/LandingStore":846,"../stores/QuestionsStore":847,"./Footer":834,"./Header2":836,"d3":121,"material-ui/AppBar":363,"material-ui/BottomNavigation":368,"material-ui/Divider":382,"material-ui/Drawer":384,"material-ui/FlatButton":389,"material-ui/FloatingActionButton":391,"material-ui/FontIcon":393,"material-ui/IconButton":395,"material-ui/MenuItem":402,"material-ui/Paper":404,"material-ui/RaisedButton":412,"material-ui/Toolbar":429,"material-ui/styles/MuiThemeProvider":444,"material-ui/styles/baseThemes/darkBaseTheme":445,"material-ui/styles/baseThemes/lightBaseTheme":446,"material-ui/styles/colors":447,"material-ui/styles/getMuiTheme":448,"material-ui/svg-icons/action/done":453,"material-ui/svg-icons/communication/location-on":454,"material-ui/svg-icons/navigation/arrow-back":457,"material-ui/svg-icons/navigation/arrow-drop-down":458,"material-ui/svg-icons/navigation/arrow-drop-up":459,"material-ui/svg-icons/navigation/arrow-forward":460,"react":707,"recharts":746}],842:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -101098,7 +101266,7 @@ var Signup = function (_Component) {
 
 module.exports = Signup;
 
-},{"./SignupForm":842,"react":707}],842:[function(require,module,exports){
+},{"./SignupForm":843,"react":707}],843:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -101293,7 +101461,7 @@ var SignupForm = function (_React$Component) {
 
 module.exports = SignupForm;
 
-},{"material-ui/Card":376,"material-ui/Checkbox":378,"material-ui/Dialog":380,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RadioButton":410,"material-ui/RaisedButton":412,"material-ui/SelectField":414,"material-ui/TextField":424,"react":707}],843:[function(require,module,exports){
+},{"material-ui/Card":376,"material-ui/Checkbox":378,"material-ui/Dialog":380,"material-ui/FlatButton":389,"material-ui/MenuItem":402,"material-ui/RadioButton":410,"material-ui/RaisedButton":412,"material-ui/SelectField":414,"material-ui/TextField":424,"react":707}],844:[function(require,module,exports){
 'use strict';
 
 var _flux = require('flux');
@@ -101303,7 +101471,7 @@ var AppDispatcher = new _flux.Dispatcher(); //var Dispatcher = require('flux').D
 
 module.exports = AppDispatcher;
 
-},{"flux":153}],844:[function(require,module,exports){
+},{"flux":153}],845:[function(require,module,exports){
 'use strict';
 
 var _Dispatcher = require('../dispatcher/Dispatcher');
@@ -101379,7 +101547,7 @@ _Dispatcher2.default.register(function (payload) {
 
 module.exports = HomeStore;
 
-},{"../dispatcher/Dispatcher":843,"../utils/ActionTypes":848,"events":128,"object-assign":486}],845:[function(require,module,exports){
+},{"../dispatcher/Dispatcher":844,"../utils/ActionTypes":849,"events":128,"object-assign":486}],846:[function(require,module,exports){
 'use strict';
 
 var _Dispatcher = require('../dispatcher/Dispatcher');
@@ -101456,7 +101624,7 @@ _Dispatcher2.default.register(function (payload) {
 
 module.exports = LandingStore;
 
-},{"../dispatcher/Dispatcher":843,"../utils/ActionTypes":848,"events":128,"object-assign":486}],846:[function(require,module,exports){
+},{"../dispatcher/Dispatcher":844,"../utils/ActionTypes":849,"events":128,"object-assign":486}],847:[function(require,module,exports){
 'use strict';
 
 var _Dispatcher = require('../dispatcher/Dispatcher');
@@ -101510,7 +101678,7 @@ _Dispatcher2.default.register(function (payload) {
 
 module.exports = QuestionsStore;
 
-},{"../dispatcher/Dispatcher":843,"../utils/ActionTypes":848,"events":128,"object-assign":486}],847:[function(require,module,exports){
+},{"../dispatcher/Dispatcher":844,"../utils/ActionTypes":849,"events":128,"object-assign":486}],848:[function(require,module,exports){
 'use strict';
 
 var httpRequest = new XMLHttpRequest();
@@ -101543,7 +101711,7 @@ var API = {
 
 module.exports = API;
 
-},{}],848:[function(require,module,exports){
+},{}],849:[function(require,module,exports){
 'use strict';
 
 var ActionTypes = {
@@ -101557,7 +101725,7 @@ var ActionTypes = {
 
 module.exports = ActionTypes;
 
-},{}],849:[function(require,module,exports){
+},{}],850:[function(require,module,exports){
 'use strict';
 
 var _API;
@@ -101576,4 +101744,4 @@ var Constants = {
 
 module.exports = Constants;
 
-},{"./ActionTypes":848}]},{},[829]);
+},{"./ActionTypes":849}]},{},[829]);

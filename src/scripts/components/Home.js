@@ -31,6 +31,7 @@ import HomeActions from '../actions/HomeActions';
 const recentsIcon = <FontIcon className="material-icons">restore</FontIcon>;
 const favoritesIcon = <FontIcon className="material-icons">favorite</FontIcon>;
 const nearbyIcon = <IconLocationOn />;
+import Header2 from './Header2';
 class Home extends React.Component {
 
     constructor(props) {
@@ -73,7 +74,7 @@ class Home extends React.Component {
             width: 900,
             // marginLeft: 350,
             // marginRight: 50,
-            marginTop: 50,
+            marginTop: 90,
             // marginBottom: 50,
             textAlign: 'center',
             display: 'inline-block',
@@ -90,25 +91,42 @@ class Home extends React.Component {
         };
 
         const buttonStyle = {
-          marginRight: 20,
-          height: 40,
-            width: 900,
-            // marginLeft: 350,
-            // marginRight: 50,
-            marginTop: 50,
-            // marginBottom: 50,
-            textAlign: 'center',
-            display: 'inline-block',
-          position: 'absolute',
-          right: 20,
-          bottom: 20,
-          left: 400
-        };
+    marginRight: 20,
+    height: 40,
+    width: 900,
+    // marginLeft: 350,
+    // marginRight: 50,
+    marginTop: 50,
+    // marginBottom: 50,
+    textAlign: 'center',
+    display: 'inline-block',
+    position: 'absolute',
+    right: 20,
+    bottom: 20,
+    left: 400
+};
+
+
+        const paperStyle = {
+  position:'fixed',
+    bottom:0,
+    left: 0,
+    right:0,
+    width: 'auto',
+    height:'40px',
+    backgroundColor: 'rgb(0, 188, 212)'
+};
+const divStyle={
+    color:'white',
+    marginTop:'8px',
+    marginLeft:'20px'
+
+}
         
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} style={{backgroundColor:Colors.grey200}}>
                 <div>
-                    <Toolbar style={{backgroundColor:Colors.cyan300}}/>
+                    <Header2/>
                     <Drawer open={this.state.open}>
                       <MenuItem primaryText={LandingStore.getUserData().email} style={{backgroundColor:Colors.cyan300, height:'56px'}}></MenuItem>
                       {

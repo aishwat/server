@@ -101739,7 +101739,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var Constants = {
-    API: (_API = {}, _defineProperty(_API, _ActionTypes2.default.GET_QUESTION_CATEGORIES, 'http://localhost:3000/categories'), _defineProperty(_API, _ActionTypes2.default.GET_QUESTIONS, 'http://localhost:3000/questions'), _defineProperty(_API, _ActionTypes2.default.REGISTER_USER, 'http://localhost:3000/signup'), _defineProperty(_API, _ActionTypes2.default.LOGIN_USER, 'http://localhost:3000/login'), _API)
+    API: (_API = {}, _defineProperty(_API, _ActionTypes2.default.GET_QUESTION_CATEGORIES, 'http://ec2-35-154-248-81.ap-south-1.compute.amazonaws.com/categories'), _defineProperty(_API, _ActionTypes2.default.GET_QUESTIONS, 'http://ec2-35-154-248-81.ap-south-1.compute.amazonaws.com/questions'), _defineProperty(_API, _ActionTypes2.default.REGISTER_USER, 'http://ec2-35-154-248-81.ap-south-1.compute.amazonaws.com/signup'), _defineProperty(_API, _ActionTypes2.default.LOGIN_USER, 'http://ec2-35-154-248-81.ap-south-1.compute.amazonaws.com/login'), _API)
 };
 
 module.exports = Constants;

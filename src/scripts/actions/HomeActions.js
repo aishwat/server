@@ -20,6 +20,13 @@ var HomeActions = {
 				data: data
 			});
 		});
+	},
+
+	viewReport: function(latestModel){
+		Dispatcher.dispatch({
+			type: ActionTypes.VIEW_REPORT,
+			data: latestModel
+		});
 	}
 };
 

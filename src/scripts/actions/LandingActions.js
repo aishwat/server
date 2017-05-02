@@ -17,11 +17,18 @@ var LandingActions = {
 				type: ActionTypes.REGISTER_USER,
 				data: data
 			});
+		}, function(){
+
 		});
 	},
 
 	login: function(formObject){
 		API.post(Constants.API[ActionTypes.LOGIN_USER], formObject, function(data){
+			Dispatcher.dispatch({
+				type: ActionTypes.LOGIN_USER,
+				data: data
+			});
+		}, function(data){
 			Dispatcher.dispatch({
 				type: ActionTypes.LOGIN_USER,
 				data: data

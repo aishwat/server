@@ -11,7 +11,7 @@ var API = {
         httpRequest.send();
     },
 
-    post : function(apiUrl , postData , successCb){
+    post : function(apiUrl , postData , successCb, errorCb){
 		$.ajax({
 			url : apiUrl,
 			type : 'POST',
@@ -19,8 +19,8 @@ var API = {
 			success : function(data , status){
 				successCb(data);
 			},
-			error : function(){
-				console.log('POST Error');
+			error : function(data, status){
+				errorCb(data);
 			}
 		});
 	},

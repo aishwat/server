@@ -60,7 +60,7 @@ function getRandomInt(min, max) {
 
 router.get('/questions', function(req, res) {
     var questions = [];
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 5; i++) {
         questions.push(stub2[getRandomInt(0, stub2.length)]);
     }
     questions.correctAnswered =  0;

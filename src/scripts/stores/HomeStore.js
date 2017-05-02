@@ -5,7 +5,7 @@ import assign from 'object-assign';
 
 var CHANGE_EVENT = 'change';
 
-var model = {};
+var model = [];
 
 var HomeStore = assign({}, EventEmitter.prototype, {
     addChangeListener: function(callback) {
@@ -54,6 +54,11 @@ Dispatcher.register(function(payload) {
                 HomeStore.emitChange();
             }
             break;
+        case ActionTypes.VIEW_REPORT:
+        {
+            model = payload.data;
+            location.href = '/#/report'
+        }
     };
 });
 

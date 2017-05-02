@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import Home from './Home';
+import Report from './Report';
 //import {RouteHandler} from 'react-router';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
 			<div>
 			  <Route exact path="/" component={LandingPage}/>
 		      <Route path="/home" component={Home}/>
+		      <Route path="/report" component={Report}/>
 		      </div>
 			</Router>
 			)

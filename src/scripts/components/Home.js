@@ -21,6 +21,7 @@ import IconButton from 'material-ui/IconButton';
 import FlatButton from 'material-ui/FlatButton';
 import {BottomNavigation, BottomNavigationItem} from 'material-ui/BottomNavigation';
 import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 import Dispatcher from '../dispatcher/Dispatcher';
 import HomeStore from '../stores/HomeStore';
@@ -42,6 +43,10 @@ class Home extends React.Component {
         };
         this.questionStyle = {
            
+        };
+        this.currentCategory = {
+            category: '',
+            subCategoryIndex: 0
         };
         this._change = this._change.bind(this);
         this._toggleCategoryClick = this._toggleCategoryClick.bind(this);
@@ -83,6 +88,22 @@ class Home extends React.Component {
             zIndex: 10
           }
         };
+
+        const buttonStyle = {
+          marginRight: 20,
+          height: 40,
+            width: 900,
+            // marginLeft: 350,
+            // marginRight: 50,
+            marginTop: 50,
+            // marginBottom: 50,
+            textAlign: 'center',
+            display: 'inline-block',
+          position: 'absolute',
+          right: 20,
+          bottom: 20,
+          left: 400
+        };
         
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} style={{backgroundColor:Colors.grey200}}>
@@ -115,9 +136,11 @@ class Home extends React.Component {
                                                             insetChildren={true}
                                                             style={{paddingLeft:'0px'}}
                                                             onTouchTap={(function(){
-                                                                // var category = object.category;
-                                                                // var _index = index;
-                                                                return function(){self._subcategoryClicked()}
+                                                                 var category = object.category;
+                                                                 var _index = index;
+                                                                return function(){
+                                                                    self._subcategoryClicked(category, _index);
+                                                                }
                                                             })()}/>
                                                     </div>
                                                     )
@@ -218,11 +241,21 @@ class Home extends React.Component {
                             }}
                               />
                             </BottomNavigation>
-                     
                         </div>
-                    </div>
-                    
+                        <RaisedButton
+                  label="View report"
+                  labelPosition="before"
+                  primary={true}
+                  icon={<ArrowForward />}
+                  style={buttonStyle}
+                  onTouchTap={function(){
+                    HomeActions.viewReport(self.state.model);
+                }}
+                />
+                    </div>  
+                           
                 </div>
+
             </MuiThemeProvider>
         );
     }
@@ -249,15 +282,24 @@ class Home extends React.Component {
         });
     }
 
-    _subcategoryClicked() {
+    _subcategoryClicked(category, subCategoryIndex) {
+        this.currentCategory.category = category;
+        this.currentCategory.subCategoryIndex = subCategoryIndex;
         HomeActions.getQuestions();
     }
 
     _answerClicked(questionIndex, answerIndex){
         var self = this;
         var newQuestions = this.state.questions;
+        var newModel = this.state.model;
         if(newQuestions[questionIndex].answer === answerIndex){
             newQuestions.correctAnswered = newQuestions.correctAnswered + 1;
+           
+            newModel.map(function(obj, index){
+                if(obj.category === self.currentCategory.category){
+                    obj.subCategories[self.currentCategory.subCategoryIndex].correctAnswered++;
+                }
+            })
         }
         newQuestions[questionIndex].options[answerIndex].style = {
             backgroundColor: Colors.red600
@@ -266,13 +308,13 @@ class Home extends React.Component {
             backgroundColor: Colors.green600
         };
         var questionNumber = this.state.questionNumber;
-        if(questionNumber < this.state.questions.length - 1){
-            setTimeout(function(){
-                self.setState({
-                    questionNumber: questionNumber + 1
-                })
-            }, 5000);
-        }
+        // if(questionNumber < this.state.questions.length - 1){
+        //     setTimeout(function(){
+        //         self.setState({
+        //             questionNumber: questionNumber + 1
+        //         })
+        //     }, 5000);
+        // }
 
         this.setState({
             questions: newQuestions

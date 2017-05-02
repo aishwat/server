@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
         
          <div>
           <RaisedButton type="submit" primary={true} label="Login" fullWidth={true} style={style}   />
-          </div>
+         </div>
           <Dialog
           title={this.state.registrationStatus}
           actions={actions}

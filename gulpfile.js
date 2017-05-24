@@ -25,18 +25,18 @@ var config = {
 };
 
 gulp.task('connect', function() {
-    // connect.server({
-    //     root: ['public'],
-    //     port: config.port,
-    //     base: config.devBaseUrl,
-    //     livereload: true
-    // });
+    connect.server({
+        root: ['public'],
+        port: config.port,
+        base: config.devBaseUrl,
+        livereload: true
+    });
 });
 
 gulp.task('open', function() {
-    gulp.src('public/index.html')
-        .pipe(open({ uri: config.devBaseUrl + ':' + config.port + '/' }))
-        .pipe(connect.reload());
+    // gulp.src('public/index.html')
+    //     .pipe(open({ uri: config.devBaseUrl + ':' + config.port + '/' }))
+    //     .pipe(connect.reload());
 });
 
 gulp.task('html', function() {

@@ -43,7 +43,7 @@ class Home extends React.Component {
             questionNumber : 0
         };
         this.questionStyle = {
-           
+
         };
         this.currentCategory = {
             category: '',
@@ -60,61 +60,58 @@ class Home extends React.Component {
         HomeActions.getQuestionCategories();
         QuestionsStore.addChangeListener(this._change);
        // HomeActions.getQuestions();
-    }
+   }
 
-    componentWillUnmount() {
-        HomeStore.removeChangeListener(this._change);
-        QuestionsStore.removeChangeListener(this._change);
-    }
+   componentWillUnmount() {
+    HomeStore.removeChangeListener(this._change);
+    QuestionsStore.removeChangeListener(this._change);
+}
 
-    render() {
-        var self = this;
-        const style = {
-            height: 80,
-            width: 900,
+render() {
+    var self = this;
+    const style = {
+        marginLeft:280,
+        height: 80,
+        marginRight:20,
+
             // marginLeft: 350,
             // marginRight: 50,
             marginTop: 90,
             // marginBottom: 50,
             textAlign: 'center',
-            display: 'inline-block',
             large: {
-            width: 120,
-            height: 120,
-            padding: 30,
-          },
-          largeIcon: {
-            width: 60,
-            height: 60,
-            zIndex: 10
-          }
+                width: 120,
+                height: 120,
+                padding: 30,
+            },
+            largeIcon: {
+                width: 60,
+                height: 60,
+                zIndex: 10
+            }
         };
 
         const buttonStyle = {
+
+            height: 40,
+    marginLeft: 280,
     marginRight: 20,
-    height: 40,
-    width: 900,
-    // marginLeft: 350,
-    // marginRight: 50,
     marginTop: 50,
     // marginBottom: 50,
     textAlign: 'center',
-    display: 'inline-block',
     position: 'absolute',
-    right: 20,
-    bottom: 20,
-    left: 400
+    bottom: 20
 };
 
 
-        const paperStyle = {
+const paperStyle = {
   position:'fixed',
-    bottom:0,
-    left: 0,
-    right:0,
-    width: 'auto',
-    height:'40px',
-    backgroundColor: 'rgb(0, 188, 212)'
+  bottom:0,
+  left: 0,
+  right:0,
+  width: 'auto',
+  height:'40px',
+  backgroundColor: 'rgb(0, 188, 212)'
 };
 const divStyle={
     color:'white',
@@ -122,210 +119,210 @@ const divStyle={
     marginLeft:'20px'
 
 }
-        
-        return (
-            <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} style={{backgroundColor:Colors.grey200}}>
-                <div>
-                    <Header2/>
-                    <Drawer open={this.state.open}>
-                      <MenuItem primaryText={LandingStore.getUserData().email} style={{backgroundColor:Colors.cyan300, height:'56px'}}></MenuItem>
-                      {
-                        this.state.model.map(function(object, index){
-                            var icon = object.isClicked ? <ArrowDropUp /> : <ArrowDropDown/>;
-                            return (
-                                <div key={index}>
-                                    <MenuItem
-                                        primaryText={object.category}
-                                        rightIcon={icon}
-                                        onTouchTap={(function(){
-                                            return function(){
-                                                var _index = index;
-                                                self._toggleCategoryClick(_index);
-                                            }
-                                        })()}
-                                        />
-                                    <Divider/>
-                                    { 
-                                        object.isClicked && object.subCategories.map(function(_object, index){
-                                                return (
-                                                    <div key={index}>
-                                                        <MenuItem
-                                                            primaryText={_object.subCategory}
-                                                            insetChildren={true}
-                                                            style={{paddingLeft:'0px'}}
-                                                            onTouchTap={(function(){
-                                                                 var category = object.category;
-                                                                 var _index = index;
-                                                                return function(){
-                                                                    self._subcategoryClicked(category, _index);
-                                                                }
-                                                            })()}/>
-                                                    </div>
-                                                    )
-                                            })
-                                    }
-                                </div>
-                                )
-                        })
-                      }
-                    </Drawer>
-                    <div className='row'>
-                        <div className='col-xs-3'></div>
-                        <div className='col-xs-9'>
-                            <Paper style={style}>
-                                {
-                                    (this.state.questions.length > 0) && (function(){
-                                        var questionObj = self.state.questions[self.state.questionNumber];
-                                        var q = (self.state.questionNumber + 1) + '/' + (self.state.questions.length)  + ')   ' + questionObj.question;
-                                        return (
-                                            <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
-                                                <p>{q}</p>
-                                            </div>
-                                        )
-                                    })()
-                                }
-                                {
-                                    (this.state.questions.length === 0) && (function(){
-                                        return (
-                                            <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
-                                                <p><b>Select category to begin</b></p>
-                                            </div>
-                                            )
-                                    })()
-                                }
-                            </Paper>
-                            {
-                                (this.state.questions.length > 0) && (function(){
-                                        var questionObj = self.state.questions[self.state.questionNumber];
-                                        return (
-                                            questionObj.options.map(function(object, index){
-                                                return (
-                                                    <div key={index} style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20, marginBottom: 20, width: 900, height: 48}}>   
-                                                        <Paper style={{height: 48}}><MenuItem primaryText={object.answer} style={object.style}
-                                                        onTouchTap={(function(){
-                                                           
-                                                            var _questionIndex = self.state.questionNumber;
-                                                            var _answerIndex = index;
-                                                            
-                                                            return function(){
-                                                               
-                                                                self._answerClicked(_questionIndex, _answerIndex);
-                                                            }
-                                                        })()}
-                                                        /></Paper>
-                                                    </div>
-                                                    )
-                                        })
-                                        )
-                                    })()
 
+return (
+    <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)} style={{backgroundColor:Colors.grey200}}>
+    <div>
+    <Header2/>
+    <Drawer open={this.state.open}>
+    <MenuItem primaryText={LandingStore.getUserData().email || "user@gmail.com"} style={{backgroundColor:Colors.cyan300, height:'56px'}}></MenuItem>
+    {
+        this.state.model.map(function(object, index){
+            var icon = object.isClicked ? <ArrowDropUp /> : <ArrowDropDown/>;
+            return (
+                <div key={index}>
+                <MenuItem
+                primaryText={object.category}
+                rightIcon={icon}
+                onTouchTap={(function(){
+                    return function(){
+                        var _index = index;
+                        self._toggleCategoryClick(_index);
+                    }
+                })()}
+                />
+                <Divider/>
+                { 
+                    object.isClicked && object.subCategories.map(function(_object, index){
+                        return (
+                            <div key={index}>
+                            <MenuItem
+                            primaryText={_object.subCategory}
+                            insetChildren={true}
+                            style={{paddingLeft:'0px'}}
+                            onTouchTap={(function(){
+                               var category = object.category;
+                               var _index = index;
+                               return function(){
+                                self._subcategoryClicked(category, _index);
                             }
+                        })()}/>
+                        </div>
+                        )
+                    })
+                }
+                </div>
+                )
+        })
+    }
+    </Drawer>
+    <div className='row'>
+    <div className='col-xs-3'></div>
+    <div className='col-xs-9'>
+    <Paper style={style}>
+    {
+        (this.state.questions.length > 0) && (function(){
+            var questionObj = self.state.questions[self.state.questionNumber];
+            var q = (self.state.questionNumber + 1) + '/' + (self.state.questions.length)  + ')   ' + questionObj.question;
+            return (
+                <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
+                <p>{q}</p>
+                </div>
+                )
+        })()
+    }
+    {
+        (this.state.questions.length === 0) && (function(){
+            return (
+                <div style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20}}>   
+                <p><b>Select category to begin</b></p>
+                </div>
+                )
+        })()
+    }
+    </Paper>
+    {
+        (this.state.questions.length > 0) && (function(){
+            var questionObj = self.state.questions[self.state.questionNumber];
+            return (
+                questionObj.options.map(function(object, index){
+                    return (
+                        <div key={index} style={{ paddingTop: 20, paddingRight: 20, marginBottom: 20, height: 48, marginLeft:280}}>   
+                        <Paper style={{height: 48}}><MenuItem primaryText={object.answer} style={object.style}
+                        onTouchTap={(function(){
+
+                            var _questionIndex = self.state.questionNumber;
+                            var _answerIndex = index;
                             
-                            <BottomNavigation style={{paddingLeft: 20, paddingTop: 20, paddingRight: 20, marginBottom: 20, width: 900, height: 48, marginTop: 50}}>
-                              <BottomNavigationItem
-                                label=""
-                                icon={<ArrowBack/>}
-                                onTouchTap={function(){
+                            return function(){
+
+                                self._answerClicked(_questionIndex, _answerIndex);
+                            }
+                        })()}
+                        /></Paper>
+                        </div>
+                        )
+                })
+                )
+        })()
+
+    }
+    
+    <BottomNavigation style={{marginLeft: 280, paddingTop: 20, paddingRight: 20, marginBottom: 20, height: 45, marginTop: 50, width:'auto', marginRight:20}}>
+    <BottomNavigationItem
+    label=""
+    icon={<ArrowBack/>}
+    onTouchTap={function(){
                                     //this.select(2)
-                                var questionNumber = self.state.questionNumber;
-                                if(questionNumber > 0){
-                                    self.setState({
-                                    questionNumber: questionNumber - 1
-                                });
-                                }
-                                
-                            }}
-                              />
-                              <BottomNavigationItem
+                                    var questionNumber = self.state.questionNumber;
+                                    if(questionNumber > 0){
+                                        self.setState({
+                                            questionNumber: questionNumber - 1
+                                        });
+                                    }
+                                    
+                                }}
+                                />
+                                <BottomNavigationItem
                                 label=""
                                 icon={<Done/>}
                                 onTouchTap={() => this.select(1)}
-                              />
-                              <BottomNavigationItem
+                                />
+                                <BottomNavigationItem
                                 label=""
                                 icon={<ArrowForward/>}
                                 onTouchTap={function(){
                                     //this.select(2)
-                                var questionNumber = self.state.questionNumber;
-                                if(questionNumber < self.state.questions.length - 1){
-                                    self.setState({
-                                    questionNumber: questionNumber + 1
-                                });
+                                    var questionNumber = self.state.questionNumber;
+                                    if(questionNumber < self.state.questions.length - 1){
+                                        self.setState({
+                                            questionNumber: questionNumber + 1
+                                        });
                                 // if(questionNumber === self.state.questions.length - 1){
                                 //     location.href = '/#/report';
                                 // }
-                                }
-                                
-                            }}
-                              />
-                            </BottomNavigation>
+                            }
+                            
+                        }}
+                        />
+                        </BottomNavigation>
                         </div>
                         <RaisedButton
-                  label="View report"
-                  labelPosition="before"
-                  primary={true}
-                  icon={<ArrowForward />}
-                  style={buttonStyle}
-                  onTouchTap={function(){
-                    HomeActions.viewReport(self.state.model);
-                }}
-                />
-                    </div>  
-                           
-                </div>
+                        label="View report"
+                        labelPosition="before"
+                        primary={true}
+                        icon={<ArrowForward />}
+                        style={buttonStyle}
+                        onTouchTap={function(){
+                            HomeActions.viewReport(self.state.model);
+                        }}
+                        />
+                        </div>  
+                        
+                        </div>
 
-            </MuiThemeProvider>
-        );
-    }
+                        </MuiThemeProvider>
+                        );
+}
 
-    _change() {
-        
-        this.setState({
-            model: HomeStore.getModel(),
-            questions: QuestionsStore.getQuestions(),
-            questionNumber: 0
-        });
-    }
+_change() {
 
-    _toggleCategoryClick(index) {
-        var newModel = this.state.model;
-        newModel.map(function(object, _index) {
-            if (index !== _index) {
-                object.isClicked = false;
-            }
-        });
-        newModel[index].isClicked = !newModel[index].isClicked;
-        this.setState({
-            model: newModel
-        });
-    }
+    this.setState({
+        model: HomeStore.getModel(),
+        questions: QuestionsStore.getQuestions(),
+        questionNumber: 0
+    });
+}
 
-    _subcategoryClicked(category, subCategoryIndex) {
-        this.currentCategory.category = category;
-        this.currentCategory.subCategoryIndex = subCategoryIndex;
-        HomeActions.getQuestions();
-    }
-
-    _answerClicked(questionIndex, answerIndex){
-        var self = this;
-        var newQuestions = this.state.questions;
-        var newModel = this.state.model;
-        if(newQuestions[questionIndex].answer === answerIndex){
-            newQuestions.correctAnswered = newQuestions.correctAnswered + 1;
-           
-            newModel.map(function(obj, index){
-                if(obj.category === self.currentCategory.category){
-                    obj.subCategories[self.currentCategory.subCategoryIndex].correctAnswered++;
-                }
-            })
+_toggleCategoryClick(index) {
+    var newModel = this.state.model;
+    newModel.map(function(object, _index) {
+        if (index !== _index) {
+            object.isClicked = false;
         }
-        newQuestions[questionIndex].options[answerIndex].style = {
-            backgroundColor: Colors.red600
-        };
-        newQuestions[questionIndex].options[newQuestions[questionIndex].answer].style = {
-            backgroundColor: Colors.green600
-        };
-        var questionNumber = this.state.questionNumber;
+    });
+    newModel[index].isClicked = !newModel[index].isClicked;
+    this.setState({
+        model: newModel
+    });
+}
+
+_subcategoryClicked(category, subCategoryIndex) {
+    this.currentCategory.category = category;
+    this.currentCategory.subCategoryIndex = subCategoryIndex;
+    HomeActions.getQuestions();
+}
+
+_answerClicked(questionIndex, answerIndex){
+    var self = this;
+    var newQuestions = this.state.questions;
+    var newModel = this.state.model;
+    if(newQuestions[questionIndex].answer === answerIndex){
+        newQuestions.correctAnswered = newQuestions.correctAnswered + 1;
+        
+        newModel.map(function(obj, index){
+            if(obj.category === self.currentCategory.category){
+                obj.subCategories[self.currentCategory.subCategoryIndex].correctAnswered++;
+            }
+        })
+    }
+    newQuestions[questionIndex].options[answerIndex].style = {
+        backgroundColor: Colors.red600
+    };
+    newQuestions[questionIndex].options[newQuestions[questionIndex].answer].style = {
+        backgroundColor: Colors.green600
+    };
+    var questionNumber = this.state.questionNumber;
         // if(questionNumber < this.state.questions.length - 1){
         //     setTimeout(function(){
         //         self.setState({

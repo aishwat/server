@@ -26,6 +26,7 @@ var auth = {
 			email: req.body.email,
 			phone: req.body.phone
 		};
+		console.log(user);
 
 		bcrypt.hash(req.body.password, null, null, function(err, hash){
 			if(err){
@@ -38,7 +39,7 @@ var auth = {
 					return res.status(500).send();
 				}
 				email_transporter.sendMail({
-					to : 'mayurjoshi9876@gmail.com',
+					to : user.email,
 					token : token
 				}, function(err, info){
 					console.log(info);

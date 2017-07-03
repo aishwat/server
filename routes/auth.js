@@ -86,7 +86,7 @@ var auth = {
 				// 		token_type: 'Bearer'
 				// 	});
 				// });
-				res.redirect('/landing');
+				res.redirect('/');
 			});
 
 		});

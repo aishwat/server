@@ -1,5 +1,5 @@
 var nodemailer = require('nodemailer');
-var url = "/signup_verified";
+var url = "http://localhost:3000/signup_verified";
 
 var email_transporter = {
     sendMail : function(mailOptions, callback){

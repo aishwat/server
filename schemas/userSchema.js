@@ -9,11 +9,11 @@ var validateEmail = function(email) {
 
 var userSchema = new Schema({
   // _id:  String, //custom _id , instead of using id and _id both
-  firstName:  {
+  firstname:  {
   	type:String,
   	required: true,
   },
-  lastName: {
+  lastname: {
   	type:String,
   	required: true,
   },

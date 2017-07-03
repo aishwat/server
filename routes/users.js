@@ -6,8 +6,8 @@ var users = {
 	save: function(req,res){
 
 		var user = new User({
-			firstName: req.body.firstName,
-			lastName:  req.body.lastName,
+			firstname: req.body.firstname,
+			lastname:  req.body.lastname,
 			email: req.body.email,
 			phone: req.body.phone,
 			address: req.body.address,
@@ -24,8 +24,8 @@ var users = {
 	},
 	update: function(req,res){
 		var tmp ={
-			firstName: req.body.first,
-			lastName:  req.body.last,
+			firstname: req.body.first,
+			lastname:  req.body.last,
 			email: req.body.email,
 			phone: req.body.phone,
 			address: req.body.address,
